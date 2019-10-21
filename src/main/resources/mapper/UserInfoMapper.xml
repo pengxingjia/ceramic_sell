@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="im.peng.ceramic.ceramic_sell.dao.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="im.peng.ceramic.ceramic_sell.model.po.UserInfo">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="gmt_create" jdbcType="INTEGER" property="gmtCreate" />
+    <result column="gmt_modify" jdbcType="BIGINT" property="gmtModify" />
+    <result column="vx_openId" jdbcType="VARCHAR" property="vxOpenid" />
+    <result column="member_id" jdbcType="VARCHAR" property="memberId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, gmt_create, gmt_modify, vx_openId, member_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from user_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="im.peng.ceramic.ceramic_sell.model.po.UserInfo">
+    <!--@mbg.generated-->
+    insert into user_info (id, gmt_create, gmt_modify, 
+      vx_openId, member_id)
+    values (#{id,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=INTEGER}, #{gmtModify,jdbcType=BIGINT}, 
+      #{vxOpenid,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="im.peng.ceramic.ceramic_sell.model.po.UserInfo">
+    <!--@mbg.generated-->
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify,
+      </if>
+      <if test="vxOpenid != null">
+        vx_openId,
+      </if>
+      <if test="memberId != null">
+        member_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=INTEGER},
+      </if>
+      <if test="gmtModify != null">
+        #{gmtModify,jdbcType=BIGINT},
+      </if>
+      <if test="vxOpenid != null">
+        #{vxOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="im.peng.ceramic.ceramic_sell.model.po.UserInfo">
+    <!--@mbg.generated-->
+    update user_info
+    <set>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=INTEGER},
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify = #{gmtModify,jdbcType=BIGINT},
+      </if>
+      <if test="vxOpenid != null">
+        vx_openId = #{vxOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        member_id = #{memberId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="im.peng.ceramic.ceramic_sell.model.po.UserInfo">
+    <!--@mbg.generated-->
+    update user_info
+    set gmt_create = #{gmtCreate,jdbcType=INTEGER},
+      gmt_modify = #{gmtModify,jdbcType=BIGINT},
+      vx_openId = #{vxOpenid,jdbcType=VARCHAR},
+      member_id = #{memberId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

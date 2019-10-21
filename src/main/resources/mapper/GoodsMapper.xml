@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="im.peng.ceramic.ceramic_sell.dao.GoodsMapper">
+  <resultMap id="BaseResultMap" type="im.peng.ceramic.ceramic_sell.model.po.Goods">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
+    <result column="gmt_modify" jdbcType="BIGINT" property="gmtModify" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
+    <result column="explain_info" jdbcType="VARCHAR" property="explainInfo" />
+    <result column="shopkeeper_id" jdbcType="VARCHAR" property="shopkeeperId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, gmt_create, gmt_modify, `name`, is_delete, explain_info, shopkeeper_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from goods
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="im.peng.ceramic.ceramic_sell.model.po.Goods">
+    <!--@mbg.generated-->
+    insert into goods (id, gmt_create, gmt_modify, 
+      `name`, is_delete, explain_info, 
+      shopkeeper_id)
+    values (#{id,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=BIGINT}, #{gmtModify,jdbcType=BIGINT}, 
+      #{name,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER}, #{explainInfo,jdbcType=VARCHAR}, 
+      #{shopkeeperId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="im.peng.ceramic.ceramic_sell.model.po.Goods">
+    <!--@mbg.generated-->
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="explainInfo != null">
+        explain_info,
+      </if>
+      <if test="shopkeeperId != null">
+        shopkeeper_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModify != null">
+        #{gmtModify,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="explainInfo != null">
+        #{explainInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="shopkeeperId != null">
+        #{shopkeeperId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="im.peng.ceramic.ceramic_sell.model.po.Goods">
+    <!--@mbg.generated-->
+    update goods
+    <set>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify = #{gmtModify,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="explainInfo != null">
+        explain_info = #{explainInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="shopkeeperId != null">
+        shopkeeper_id = #{shopkeeperId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="im.peng.ceramic.ceramic_sell.model.po.Goods">
+    <!--@mbg.generated-->
+    update goods
+    set gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      gmt_modify = #{gmtModify,jdbcType=BIGINT},
+      `name` = #{name,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      explain_info = #{explainInfo,jdbcType=VARCHAR},
+      shopkeeper_id = #{shopkeeperId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

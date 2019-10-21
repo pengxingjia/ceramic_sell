@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="im.peng.ceramic.ceramic_sell.dao.MemberInfoMapper">
+  <resultMap id="BaseResultMap" type="im.peng.ceramic.ceramic_sell.model.po.MemberInfo">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
+    <result column="gmt_modify" jdbcType="BIGINT" property="gmtModify" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="identity" jdbcType="VARCHAR" property="identity" />
+    <result column="expiration_time" jdbcType="BIGINT" property="expirationTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, gmt_create, gmt_modify, `password`, account, `identity`, expiration_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from member_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from member_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="im.peng.ceramic.ceramic_sell.model.po.MemberInfo">
+    <!--@mbg.generated-->
+    insert into member_info (id, gmt_create, gmt_modify, 
+      `password`, account, `identity`, 
+      expiration_time)
+    values (#{id,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=BIGINT}, #{gmtModify,jdbcType=BIGINT}, 
+      #{password,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, #{identity,jdbcType=VARCHAR}, 
+      #{expirationTime,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="im.peng.ceramic.ceramic_sell.model.po.MemberInfo">
+    <!--@mbg.generated-->
+    insert into member_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="identity != null">
+        `identity`,
+      </if>
+      <if test="expirationTime != null">
+        expiration_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModify != null">
+        #{gmtModify,jdbcType=BIGINT},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="expirationTime != null">
+        #{expirationTime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="im.peng.ceramic.ceramic_sell.model.po.MemberInfo">
+    <!--@mbg.generated-->
+    update member_info
+    <set>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify = #{gmtModify,jdbcType=BIGINT},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        `identity` = #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="expirationTime != null">
+        expiration_time = #{expirationTime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="im.peng.ceramic.ceramic_sell.model.po.MemberInfo">
+    <!--@mbg.generated-->
+    update member_info
+    set gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      gmt_modify = #{gmtModify,jdbcType=BIGINT},
+      `password` = #{password,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      `identity` = #{identity,jdbcType=VARCHAR},
+      expiration_time = #{expirationTime,jdbcType=BIGINT}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

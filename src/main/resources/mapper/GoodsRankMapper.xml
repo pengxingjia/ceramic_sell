@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="im.peng.ceramic.ceramic_sell.dao.GoodsRankMapper">
+  <resultMap id="BaseResultMap" type="im.peng.ceramic.ceramic_sell.model.po.GoodsRank">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
+    <result column="gmt_modify" jdbcType="BIGINT" property="gmtModify" />
+    <result column="specifications" jdbcType="VARCHAR" property="specifications" />
+    <result column="remain_amount" jdbcType="INTEGER" property="remainAmount" />
+    <result column="total_amount" jdbcType="INTEGER" property="totalAmount" />
+    <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="explain_info" jdbcType="VARCHAR" property="explainInfo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, gmt_create, gmt_modify, specifications, remain_amount, total_amount, goods_id, 
+    price, explain_info
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from goods_rank
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from goods_rank
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="im.peng.ceramic.ceramic_sell.model.po.GoodsRank">
+    <!--@mbg.generated-->
+    insert into goods_rank (id, gmt_create, gmt_modify, 
+      specifications, remain_amount, total_amount, 
+      goods_id, price, explain_info
+      )
+    values (#{id,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=BIGINT}, #{gmtModify,jdbcType=BIGINT}, 
+      #{specifications,jdbcType=VARCHAR}, #{remainAmount,jdbcType=INTEGER}, #{totalAmount,jdbcType=INTEGER}, 
+      #{goodsId,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE}, #{explainInfo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="im.peng.ceramic.ceramic_sell.model.po.GoodsRank">
+    <!--@mbg.generated-->
+    insert into goods_rank
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify,
+      </if>
+      <if test="specifications != null">
+        specifications,
+      </if>
+      <if test="remainAmount != null">
+        remain_amount,
+      </if>
+      <if test="totalAmount != null">
+        total_amount,
+      </if>
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="explainInfo != null">
+        explain_info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModify != null">
+        #{gmtModify,jdbcType=BIGINT},
+      </if>
+      <if test="specifications != null">
+        #{specifications,jdbcType=VARCHAR},
+      </if>
+      <if test="remainAmount != null">
+        #{remainAmount,jdbcType=INTEGER},
+      </if>
+      <if test="totalAmount != null">
+        #{totalAmount,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="explainInfo != null">
+        #{explainInfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="im.peng.ceramic.ceramic_sell.model.po.GoodsRank">
+    <!--@mbg.generated-->
+    update goods_rank
+    <set>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtModify != null">
+        gmt_modify = #{gmtModify,jdbcType=BIGINT},
+      </if>
+      <if test="specifications != null">
+        specifications = #{specifications,jdbcType=VARCHAR},
+      </if>
+      <if test="remainAmount != null">
+        remain_amount = #{remainAmount,jdbcType=INTEGER},
+      </if>
+      <if test="totalAmount != null">
+        total_amount = #{totalAmount,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="explainInfo != null">
+        explain_info = #{explainInfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="im.peng.ceramic.ceramic_sell.model.po.GoodsRank">
+    <!--@mbg.generated-->
+    update goods_rank
+    set gmt_create = #{gmtCreate,jdbcType=BIGINT},
+      gmt_modify = #{gmtModify,jdbcType=BIGINT},
+      specifications = #{specifications,jdbcType=VARCHAR},
+      remain_amount = #{remainAmount,jdbcType=INTEGER},
+      total_amount = #{totalAmount,jdbcType=INTEGER},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      price = #{price,jdbcType=DOUBLE},
+      explain_info = #{explainInfo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
