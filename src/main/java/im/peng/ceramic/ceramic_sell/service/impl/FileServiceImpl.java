@@ -1,13 +1,16 @@
 package im.peng.ceramic.ceramic_sell.service.impl;
 
+import com.google.common.collect.Lists;
 import im.peng.ceramic.ceramic_sell.constants.ErrorCodeConstants;
 import im.peng.ceramic.ceramic_sell.constants.exception.CommonException;
+import im.peng.ceramic.ceramic_sell.constants.exception.ParamException;
 import im.peng.ceramic.ceramic_sell.dao.ImageMapper;
 import im.peng.ceramic.ceramic_sell.model.po.Image;
 import im.peng.ceramic.ceramic_sell.service.FileService;
 import im.peng.ceramic.ceramic_sell.util.StringUtil;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,12 @@ public class FileServiceImpl implements FileService {
      */
     @Override
     public String fileUpload(HttpServletRequest request, MultipartFile file, String vxOpenId) {
+        // 首先校验图片格式
+        List<String> imageType = Lists.newArrayList("jpg","jpeg", "png", "bmp", "gif");
+        if (!imageType.contains(file.getOriginalFilename())){
+            log.error("上传到文件不是图片");
+            throw new ParamException(ErrorCodeConstants.FILE_TYPE_ERR);
+        }
         //处理文件流
         Image image = processingFile(request, file);
         image.setUploadId(vxOpenId);

@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="im.peng.ceramic.ceramic_sell.model.po.UserInfo">
     <!--@mbg.generated-->
     <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="gmt_create" jdbcType="INTEGER" property="gmtCreate" />
+    <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
     <result column="gmt_modify" jdbcType="BIGINT" property="gmtModify" />
     <result column="vx_openId" jdbcType="VARCHAR" property="vxOpenid" />
     <result column="member_id" jdbcType="VARCHAR" property="memberId" />
@@ -29,7 +29,7 @@
     <!--@mbg.generated-->
     insert into user_info (id, gmt_create, gmt_modify, 
       vx_openId, member_id)
-    values (#{id,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=INTEGER}, #{gmtModify,jdbcType=BIGINT}, 
+    values (#{id,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=BIGINT}, #{gmtModify,jdbcType=BIGINT}, 
       #{vxOpenid,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="im.peng.ceramic.ceramic_sell.model.po.UserInfo">
@@ -57,7 +57,7 @@
         #{id,jdbcType=VARCHAR},
       </if>
       <if test="gmtCreate != null">
-        #{gmtCreate,jdbcType=INTEGER},
+        #{gmtCreate,jdbcType=BIGINT},
       </if>
       <if test="gmtModify != null">
         #{gmtModify,jdbcType=BIGINT},
@@ -75,7 +75,7 @@
     update user_info
     <set>
       <if test="gmtCreate != null">
-        gmt_create = #{gmtCreate,jdbcType=INTEGER},
+        gmt_create = #{gmtCreate,jdbcType=BIGINT},
       </if>
       <if test="gmtModify != null">
         gmt_modify = #{gmtModify,jdbcType=BIGINT},
@@ -92,10 +92,17 @@
   <update id="updateByPrimaryKey" parameterType="im.peng.ceramic.ceramic_sell.model.po.UserInfo">
     <!--@mbg.generated-->
     update user_info
-    set gmt_create = #{gmtCreate,jdbcType=INTEGER},
+    set gmt_create = #{gmtCreate,jdbcType=BIGINT},
       gmt_modify = #{gmtModify,jdbcType=BIGINT},
       vx_openId = #{vxOpenid,jdbcType=VARCHAR},
       member_id = #{memberId,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  <select id="getByVxOpenId" resultType="im.peng.ceramic.ceramic_sell.model.po.UserInfo">
+    select
+    <include refid="Base_Column_List" />
+    from user_info
+    where vx_openId = #{vxOpenId,jdbcType=VARCHAR}
+  </select>
+
 </mapper>

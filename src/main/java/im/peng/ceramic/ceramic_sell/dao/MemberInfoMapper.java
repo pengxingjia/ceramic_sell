@@ -14,4 +14,8 @@ public interface MemberInfoMapper {
     int updateByPrimaryKeySelective(MemberInfo record);
 
     int updateByPrimaryKey(MemberInfo record);
+
+    //根据会员查询id查询会员卡信息
+    MemberInfo getByIdentity(String identity);
+
 }

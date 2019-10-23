@@ -122,4 +122,11 @@
       expiration_time = #{expirationTime,jdbcType=BIGINT}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  <select id="getByIdentity" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from member_info
+    where identity = #{identity,jdbcType=VARCHAR}
+  </select>
 </mapper>
