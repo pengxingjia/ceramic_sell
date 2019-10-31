@@ -14,6 +14,10 @@ class CeramicSellApplicationTests {
     void contextLoads() {
         try {
             System.out.println(JwtEncryption.createFreshToken("12345"));
+            String vxOpenId = "oEjtL5KMTaP48F8M8YPRBxL55WLU";
+            String token = JwtEncryption.createToken(vxOpenId);
+            String freshToken = JwtEncryption.createFreshToken(vxOpenId);
+            System.out.println(token);
         } catch (Exception e) {
             e.printStackTrace();
         }

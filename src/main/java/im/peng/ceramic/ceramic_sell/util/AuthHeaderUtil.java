@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class AuthHeaderUtil {
 
-    public static final String HEAD_BEAR = "Bearer ";
+    public static final String HEAD_BEAR = "";
 
     /**
      * 通过authHeader获取token

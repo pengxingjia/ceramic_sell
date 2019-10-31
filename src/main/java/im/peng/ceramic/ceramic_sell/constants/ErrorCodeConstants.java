@@ -42,5 +42,8 @@ public final class ErrorCodeConstants {
     public static final CodeMsgDTO FILE_TYPE_ERR = CodeMsgDTO.create(4002L, "上传的文件不是图片");
 
 
+    public static final CodeMsgDTO HTTP_REQUEST_ERR = CodeMsgDTO.create(5000L, "发送http请求失败");
+
+
 
 }

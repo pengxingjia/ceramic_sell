@@ -34,4 +34,8 @@ public class BaseDataVo<T> {
     public static <T> BaseDataVo successData(T data){
         return dataVo(0, data);
     }
+
+    public static <T> BaseDataVo successDefaultData(){
+        return dataVo(0, null);
+    }
 }

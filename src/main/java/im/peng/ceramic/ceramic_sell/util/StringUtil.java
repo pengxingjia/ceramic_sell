@@ -1,5 +1,7 @@
 package im.peng.ceramic.ceramic_sell.util;
 
+import im.peng.ceramic.ceramic_sell.constants.ErrorCodeConstants;
+import im.peng.ceramic.ceramic_sell.constants.exception.ParamException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
@@ -109,5 +111,17 @@ public class StringUtil {
         String realPath = request.getSession().getServletContext().getRealPath("/") + "/static/";
         realPath = realPath.replaceAll("\\\\", "/");
         return realPath;
+    }
+
+    /**
+     * 参数为空校验
+     * @param objects 需要校验的参数
+     */
+    public static void checkParamIsNull(Object... objects){
+        for (Object object : objects) {
+            if (object == null) {
+                throw new ParamException(ErrorCodeConstants.PARAM_ERROR);
+            }
+        }
     }
 }

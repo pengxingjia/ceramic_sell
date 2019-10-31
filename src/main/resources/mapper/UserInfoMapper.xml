@@ -8,10 +8,18 @@
     <result column="gmt_modify" jdbcType="BIGINT" property="gmtModify" />
     <result column="vx_openId" jdbcType="VARCHAR" property="vxOpenid" />
     <result column="member_id" jdbcType="VARCHAR" property="memberId" />
+    <result column="nickName" jdbcType="VARCHAR" property="nickname" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, gmt_create, gmt_modify, vx_openId, member_id
+    id, gmt_create, gmt_modify, vx_openId, member_id, nickName, sex, country, province, 
+    city, avatar, mobile
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     <!--@mbg.generated-->
@@ -28,9 +36,15 @@
   <insert id="insert" parameterType="im.peng.ceramic.ceramic_sell.model.po.UserInfo">
     <!--@mbg.generated-->
     insert into user_info (id, gmt_create, gmt_modify, 
-      vx_openId, member_id)
+      vx_openId, member_id, nickName, 
+      sex, country, province, 
+      city, avatar, mobile
+      )
     values (#{id,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=BIGINT}, #{gmtModify,jdbcType=BIGINT}, 
-      #{vxOpenid,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR})
+      #{vxOpenid,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="im.peng.ceramic.ceramic_sell.model.po.UserInfo">
     <!--@mbg.generated-->
@@ -51,6 +65,27 @@
       <if test="memberId != null">
         member_id,
       </if>
+      <if test="nickname != null">
+        nickName,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -67,6 +102,27 @@
       </if>
       <if test="memberId != null">
         #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -86,6 +142,27 @@
       <if test="memberId != null">
         member_id = #{memberId,jdbcType=VARCHAR},
       </if>
+      <if test="nickname != null">
+        nickName = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -95,10 +172,17 @@
     set gmt_create = #{gmtCreate,jdbcType=BIGINT},
       gmt_modify = #{gmtModify,jdbcType=BIGINT},
       vx_openId = #{vxOpenid,jdbcType=VARCHAR},
-      member_id = #{memberId,jdbcType=VARCHAR}
+      member_id = #{memberId,jdbcType=VARCHAR},
+      nickName = #{nickname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <select id="getByVxOpenId" resultType="im.peng.ceramic.ceramic_sell.model.po.UserInfo">
+  <select id="getByVxOpenId" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from user_info

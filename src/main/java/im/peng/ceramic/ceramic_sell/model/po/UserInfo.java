@@ -22,5 +22,19 @@ public class UserInfo implements Serializable {
      */
     private String memberId;
 
+    private String nickname;
+
+    private String sex;
+
+    private String country;
+
+    private String province;
+
+    private String city;
+
+    private String avatar;
+
+    private String mobile;
+
     private static final long serialVersionUID = 1L;
 }
